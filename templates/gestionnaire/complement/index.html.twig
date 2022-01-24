@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title'Gestion des complements' %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Gestion des complements</h1>
+
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for complement in complements %}
+                <tr>
+                    <td>{{ complement.nom }}</td>
+                    <td>
+                        <a href="{{ path('gestionnaire.complement.edit',{id: complement.id}) }}" class="btn btn-secondary">Modifier</a>
+                        <form method="post" action="{{ path('gestionnaire.complement.delete',{id: complement.id}) }}"
+                              style="display: inline-block" onsubmit="return confirm('Etes-vous vraiment sûr ?')">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete'~ complement.id) }}"/>
+                            <input type="hidden" name="_method" value="DELETE"/>
+                            <button class="btn btn-danger">Suprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-right">
+            <a href="{{ path('gestionnaire.complement.new') }}" class="btn btn-primary">Ajouter</a>
+        </div>
+
+    </div>
+{% endblock %}
+
+
+

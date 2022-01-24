@@ -1,0 +1,17 @@
+<div class="card mb-4">
+    <img src="/upload/menu/{{ menu.image }}" alt="card-img-top" style="width: 100%; height: auto">
+    <div class="card-body">
+        <h5 class="card-title">
+            <a href="{{ path('menu.show', {slug: menu.slug, id: menu.id }) }}">
+                {{ menu.nom }}
+            </a>
+        </h5>
+        <div class="text-primary" style="font-size: 2rem; font-weight: bold">
+            {{ menu.formatPrice }} Fcfa
+        </div>
+        <a href="{{ path('panier.add', {id: menu.id}) }}" class="btn btn-primary">Ajouter</a>
+
+
+    </div>
+
+</div>

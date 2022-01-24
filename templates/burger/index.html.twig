@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title'Les burgers ' %}
+
+{% block body %}
+        <div class="container mt-4">
+            <h1>Les burger</h1>
+
+        <div class="row">
+            {% for burger in burgers %}
+                <div class="col-md-4">
+                    {% include 'burger/ burger.html.twig' %}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="pagination">
+                {{ knp_pagination_render(burgers) }}
+        </div>
+        </div>
+
+
+
+{% endblock %}

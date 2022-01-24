@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title'Gestion des Burgers' %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Gestion des burgers</h1>
+
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for burger in burgers %}
+            <tr>
+                <td>{{ burger.nom }}</td>
+                <td>
+                    <a href="{{ path('gestionnaire.burger.edit',{id: burger.id}) }}" class="btn btn-secondary">Modifier</a>
+                    <form method="post" action="{{ path('gestionnaire.burger.delete',{id: burger.id}) }}"
+                          style="display: inline-block" onsubmit="return confirm('Etes-vous vraiment sûr ?')">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete'~ burger.id) }}"/>
+                        <input type="hidden" name="_method" value="DELETE"/>
+                        <button class="btn btn-danger">Suprimer</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-right">
+            <a href="{{ path('gestionnaire.burger.new') }}" class="btn btn-primary">Ajouter</a>
+        </div>
+
+    </div>
+{% endblock %}
+
+
+

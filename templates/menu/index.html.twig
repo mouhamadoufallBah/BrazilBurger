@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title'Les menu' %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Les menu</h1>
+
+        <div class="row">
+            {% for menu in menus %}
+                <div class="col-md-4">
+                    {% include 'menu/menu.html.twig' %}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="pagination">
+        {{ knp_pagination_render(menus) }}
+        </div>
+    </div>
+
+
+
+{% endblock %}

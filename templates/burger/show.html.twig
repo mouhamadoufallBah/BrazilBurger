@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title burger.nom %}
+
+{% block body %}
+    <div class="container mt-4 ">
+        <div class="row ">
+            <div class="col-md-8">
+                <img src="/upload/burger/{{ burger.image }}" alt="card-img-top" style="width: 75%; height: 75%">
+            </div>
+            <div class="col-md-4">
+                <h1>{{ burger.nom }}</h1>
+                <div class="text-primary" style="font-size: 4rem;font-weight: bold">{{ burger.formatPrice }} Fcfa </div>
+                <a href="#" class="btn btn-primary">Commander</a>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+
+

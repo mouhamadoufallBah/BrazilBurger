@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title'Les complements ' %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Les complements</h1>
+
+        <div class="row">
+            {% for complement in complements %}
+                <div class="col-md-4">
+                    {% include 'complement/complement.html.twig' %}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="pagination">
+            {{ knp_pagination_render(complements) }}
+        </div>
+    </div>
+
+
+
+{% endblock %}

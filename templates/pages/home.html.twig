@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title'Brazil Burger' %}
+
+{% block body %}
+    <div class="jumbotron text-center">
+        <div class="container">
+            <h1>Bienvenue sur la homepage</h1>
+            <p>Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor v vLorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor
+                Lorem ipsum dolor Lorem ipsum dolor</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Les Burgers et Menu</h2>
+        <div class="row flex">
+            {% for burger in burgers %}
+            <div class="col-3 mb-4">
+                <div class="card">
+                    <img src="/upload/burger/{{ burger.image }}" alt="card-img-top" style="width: 100%; height: auto">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                           <a href="{{ path('burger.show', {id: burger.id, slug: burger.slug}) }}">{{ burger.nom }}</a>
+                        </h5>
+                        <div class="text-primary" style="font-weight: bold;font-size: 2rem">{{ burger.prix }} Fcfa</div>
+                        <a href="{{ path('panier.add', {id: burger.id}) }}" class="btn btn-primary">Ajouter</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

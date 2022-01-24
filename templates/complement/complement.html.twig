@@ -1,0 +1,15 @@
+<div class="card mb-4">
+    <img src="/upload/complement/{{ complement.image }}" alt="card-img-top" style="width: 100%; height: auto">
+    <div class="card-body">
+        <h5 class="card-title">
+            <a href="{{ path('complement.show', {slug: complement.slug, id: complement.id }) }}">
+                {{ complement.nom }}
+            </a>
+        </h5>
+        <div class="text-primary" style="font-size: 2rem; font-weight: bold">
+            {{ complement.formatPrice }} Fcfa
+        </div>
+
+    </div>
+
+</div>
