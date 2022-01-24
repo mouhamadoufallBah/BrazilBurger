@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier!{% endblock %}
+
+{% block body %}
+
+    <div class="container" mt-4>
+        <div>
+            <h1>Votre panier</h1>
+        </div>
+        {% if items | length > 0 %}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Produit</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in items %}
+                    <tr>
+                        {% if item.burger %}
+                            <td>{{ item.burger.nom }}</td>
+                            <td>{{ item.burger.prix }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>{{ item.burger.prix * item.quantity }}</td>
+                            <td>
+                                <a href="{{ path('panier.remove', {id: item.burger.id}) }}" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        {% endif %}
+
+                        {% if item.menu %}
+                            <td>{{ item.menu.nom }}</td>
+                            <td>{{ item.menu.prix }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>{{ item.menu.prix * item.quantity }}</td>
+                            <td>
+                                <a href="{{ path('panier.remove', {id: item.menu.id}) }}" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+
+                        {% endif %}
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="3" class="text-right">Total : </td>
+                    <td>{{ total }}</td>
+                    <td></td>
+                </tr>
+                </tfoot>
+            </table>
+            <button class="btn btn-primary mr-0">Commander</button>
+
+        {% else %}
+            <p>Votre panier est vide</p>
+        {% endif %}
+
+    </div>
+
+
+
+{% endblock %}
